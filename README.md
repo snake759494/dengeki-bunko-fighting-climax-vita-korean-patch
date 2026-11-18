@@ -7,7 +7,7 @@ PS Vita 일본판 **전격문고 FIGHTING CLIMAX(電撃文庫 FIGHTING CLIMAX, P
 - 전투 HUD, 승리 화면, 갤러리·뮤직 목록, 부팅 경고문
 - 스페셜 > 노벨 갤러리 19권 본문 **389쪽**(세로쓰기)
 
-현재 배포판은 **v1.0.1 (2026-11-18)**입니다.
+현재 배포판은 **v1.0.2 (2026-11-18)**입니다.
 
 [패치 다운로드](https://github.com/snake759494/dengeki-bunko-fighting-climax-vita-korean-patch/releases/latest) · [기술 설명](docs/TECHNICAL.md) · [재빌드](docs/BUILD.md) · [용어집](docs/GLOSSARY.md) · [변경 기록](CHANGELOG.md) · [권리 안내](RIGHTS.md)
 
@@ -31,31 +31,38 @@ GitHub가 자동으로 만드는 Source code ZIP/TAR는 저장소 소스를 압�
 
 ### 1. 받기
 
-릴리즈에서 `Dengeki_Bunko_Fighting_Climax_Vita_KO_v1.0.1_xdelta.zip`을 받아 압축을 풉니다. 안에 `PCSG00341/` 폴더가 있습니다. 각 파일은 `원래 경로.xdelta` 형태입니다. 예: `PCSG00341/grpdat/Title/taitle_logo00.gxt.gz.xdelta`
+릴리즈에서 `Dengeki_Bunko_Fighting_Climax_Vita_KO_v1.0.2_xdelta.zip`을 받아 압축을 풉니다. 안에는 다음이 들어 있습니다.
+
+- `적용하기.bat`: Windows용 적용 도구(Python 필요 없음)
+- `list.txt`: 파일 목록과 원본·결과 MD5
+- `xdelta3.exe`: xdelta 3.1.0([공식 프로젝트](https://github.com/jmacd/xdelta), Apache License 2.0)
+- `patch/PCSG00341/`: 파일별 xdelta 948개. 예: `patch/PCSG00341/grpdat/Title/taitle_logo00.gxt.gz.xdelta`
 
 ### 2. 적용
 
-**자동 적용(권장)**: Python 3와 xdelta3가 필요합니다. 원본 MD5를 확인한 뒤 948개를 한 번에 적용합니다. 결과 MD5도 검사합니다.
+**Windows(권장, Python 필요 없음)**
 
-```powershell
-python tools/apply_release.py --xdelta '.\xdelta3.exe' --source-dir '.\PCSG00341' --patch-dir '.\patch\PCSG00341' --output-dir '.\ko\PCSG00341'
+1. 설치된 원본 게임 폴더 `PCSG00341`을 통째로 압축을 푼 폴더에 복사합니다. `적용하기.bat` 옆에 `PCSG00341\eboot.bin`이 있어야 합니다.
+2. `적용하기.bat`을 더블클릭합니다. 원본 MD5를 확인하고 xdelta를 적용한 뒤 결과 MD5까지 검사합니다. 2분 정도 걸립니다.
+3. `성공 948 / 전체 948, 문제 0`이 나오면 `한글패치\PCSG00341` 폴더에 결과가 만들어집니다. 원본 폴더는 바뀌지 않습니다.
+
+**수동 적용(다른 OS)**: 파일마다 다음 명령을 실행합니다.
+
+```bash
+xdelta3 -d -s PCSG00341/eboot.bin patch/PCSG00341/eboot.bin.xdelta ko/PCSG00341/eboot.bin
 ```
 
-- `--source-dir`: 원본 게임 폴더
-- `--patch-dir`: ZIP에서 푼 `PCSG00341` 폴더
-- `--output-dir`: 결과를 만들 폴더. 같은 이름의 파일이 이미 있으면 덮어쓰지 않습니다.
+**Python 스크립트**: 저장소의 `tools/apply_release.py`로도 같은 검사를 하며 적용할 수 있습니다.
 
-**수동 적용**: 파일마다 다음 명령을 실행합니다.
-
-```powershell
-.\xdelta3.exe -d -s '.\PCSG00341\eboot.bin' '.\patch\PCSG00341\eboot.bin.xdelta' '.\ko\PCSG00341\eboot.bin'
+```bash
+python tools/apply_release.py --xdelta xdelta3 --source-dir PCSG00341 --patch-dir patch/PCSG00341 --output-dir ko/PCSG00341
 ```
 
-xdelta는 호환성을 위해 압축·2차 압축 없이 만들었습니다. 그래서 적용이 빠릅니다. xdelta 자체는 [공식 프로젝트](https://github.com/jmacd/xdelta)를 참고하세요.
+xdelta는 호환성을 위해 압축·2차 압축 없이 만들었습니다. 그래서 적용이 빠릅니다.
 
 ### 3. 게임에 넣기
 
-- **PS Vita 실기(rePatch, 권장)**: 결과 폴더의 내용을 `ux0:rePatch/PCSG00341/`에 복사합니다. 원본 게임 폴더는 그대로 둡니다.
+- **PS Vita 실기(rePatch, 권장)**: `한글패치\\PCSG00341` 폴더의 내용을 `ux0:rePatch/PCSG00341/`에 복사합니다. 원본 게임 폴더는 그대로 둡니다.
 - **PS Vita 실기(직접 교체)**: `ux0:app/PCSG00341/`의 원본을 백업한 뒤 결과 파일로 덮어씁니다.
 - **Vita3K**: 설치된 게임 폴더(`<Vita3K 데이터 폴더>/ux0/app/PCSG00341/`)에 결과 파일을 덮어씁니다.
 
@@ -120,6 +127,7 @@ xdelta는 호환성을 위해 압축·2차 압축 없이 만들었습니다. 그
 - `pac.py`: UKArc(`.pac`) 묶음 읽기·재구성, 말풍선 교체
 - `img_*.py`: 화면별 그림 글자
 - `emu.py`: 에뮬레이터 조작
-- `apply_release.py`: 해시 검사 후 적용
+- `apply_release.py`: 해시 검사 후 적용(Python용)
+- `windows/적용하기.bat`, `windows/list.txt`: 릴리즈 ZIP에 들어가는 Windows용 적용 도구
 
 권리 관련 내용은 [RIGHTS.md](RIGHTS.md)를 참고하세요.

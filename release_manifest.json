@@ -1,8 +1,8 @@
 {
  "game": "Dengeki Bunko: Fighting Climax (PS Vita, JP, PCSG00341)",
- "version": "1.0.1",
+ "version": "1.0.2",
  "base_dir": "ux0:app/PCSG00341/",
- "asset": "Dengeki_Bunko_Fighting_Climax_Vita_KO_v1.0.1_xdelta.zip",
+ "asset": "Dengeki_Bunko_Fighting_Climax_Vita_KO_v1.0.2_xdelta.zip",
  "files": [
   {
    "target": "BattleRes/talk/script/00Sha/ex_talk_Sha_11_01.txt",
@@ -12328,5 +12328,6 @@
    "patch_md5": "633de5c1d7f30783a30a250db7d547ec",
    "patch_sha256": "14f9ec07e359fbd57cb016783618200b3151dcaa18485142099ada06a0ba19fa"
   }
- ]
+ ],
+ "patch_dir_in_asset": "patch/PCSG00341/"
 }
