@@ -1,8 +1,8 @@
 {
  "game": "Dengeki Bunko: Fighting Climax (PS Vita, JP, PCSG00341)",
- "version": "1.0.2",
+ "version": "1.0.3",
  "base_dir": "ux0:app/PCSG00341/",
- "asset": "Dengeki_Bunko_Fighting_Climax_Vita_KO_v1.0.2_xdelta.zip",
+ "asset": "Dengeki_Bunko_Fighting_Climax_Vita_KO_v1.0.3_xdelta.zip",
  "files": [
   {
    "target": "BattleRes/talk/script/00Sha/ex_talk_Sha_11_01.txt",
@@ -3078,12 +3078,12 @@
    "source_size": 1670688,
    "source_md5": "f78cd0224bda41cd86d76e735a2a8640",
    "source_sha256": "778f63c8fa3553f6ec7642236d598d0d0e721d475ac2e97fb491275fa1008718",
-   "output_size": 3539648,
-   "output_md5": "99a7529d7c0d9c6d80df67de7c912add",
-   "output_sha256": "cb30457012b262900fba16fbe780d1205f862fdbe3a523236165d9818761e154",
-   "patch_size": 1385777,
-   "patch_md5": "b53eb6bad1abf1792df50c7c9d67e7ce",
-   "patch_sha256": "6cebd351d39ab65fa4b50ceac8d9495526c4365acc100477e2136d96907ed5ff"
+   "output_size": 3539864,
+   "output_md5": "f1c211316a5c3aafbb5c9e4211be0a42",
+   "output_sha256": "16b18b26e9c052c6d55423c9814dacdff274af7c34f8953da9904077cdd37099",
+   "patch_size": 3290245,
+   "patch_md5": "ad7482ea9b0aa5b1efb81105dee65d43",
+   "patch_sha256": "50f729467810724424df980a3ccae181ffd307407e60f5a3266e62184245738c"
   },
   {
    "target": "grpdat/BattleResult/modesele00.gxt.gz",

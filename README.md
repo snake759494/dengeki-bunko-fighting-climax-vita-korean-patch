@@ -7,7 +7,7 @@ PS Vita 일본판 **전격문고 FIGHTING CLIMAX(電撃文庫 FIGHTING CLIMAX, P
 - 전투 HUD, 승리 화면, 갤러리·뮤직 목록, 부팅 경고문
 - 스페셜 > 노벨 갤러리 19권 본문 **389쪽**(세로쓰기)
 
-현재 배포판은 **v1.0.2 (2026-11-18)**입니다.
+현재 배포판은 **v1.0.3 (2026-11-18)**입니다.
 
 [패치 다운로드](https://github.com/snake759494/dengeki-bunko-fighting-climax-vita-korean-patch/releases/latest) · [기술 설명](docs/TECHNICAL.md) · [재빌드](docs/BUILD.md) · [용어집](docs/GLOSSARY.md) · [변경 기록](CHANGELOG.md) · [권리 안내](RIGHTS.md)
 
@@ -31,7 +31,7 @@ GitHub가 자동으로 만드는 Source code ZIP/TAR는 저장소 소스를 압�
 
 ### 1. 받기
 
-릴리즈에서 `Dengeki_Bunko_Fighting_Climax_Vita_KO_v1.0.2_xdelta.zip`을 받아 압축을 풉니다. 안에는 다음이 들어 있습니다.
+릴리즈에서 `Dengeki_Bunko_Fighting_Climax_Vita_KO_v1.0.3_xdelta.zip`을 받아 압축을 풉니다. 안에는 다음이 들어 있습니다.
 
 - `적용하기.bat`: Windows용 적용 도구(Python 필요 없음)
 - `list.txt`: 파일 목록과 원본·결과 MD5
