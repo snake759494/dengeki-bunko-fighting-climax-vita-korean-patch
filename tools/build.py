@@ -21,7 +21,7 @@ def okslot(c):
 def main():
     files=list(kofiles()); texts={p:open(KO+'/'+p,encoding='utf-8',newline='').read() for p in files}
     from eboot import TR
-    hang=sorted(set(ch for t in list(texts.values())+[x[2] for x in TR()] for ch in t if '\uac00'<=ch<='\ud7a3'))
+    hang=sorted(set(ch for t in list(texts.values())+[v for d in __import__('pac').TR().values() for v in d.values()]+[x[2] for x in TR()] for ch in t if '\uac00'<=ch<='\ud7a3'))
     hdr,ents,tail=fnt.readfnt(orig('grpdat/Font/Font00.fnt'))
     slots=sorted([i for i,e in enumerate(ents) if okslot(e[0]) and e[6]>=21 and e[7]>=21],key=lambda i:ents[i][0])
     assert len(hang)<=len(slots),(len(hang),len(slots))
@@ -65,6 +65,12 @@ def main():
         with gzip.open(OUT+'/'+gp,'wb',compresslevel=6) as f: f.write(d)
     fnt.writefnt(hdr,ents,tail,OUT+'/grpdat/Font/Font00.fnt')
     import eboot; eboot.build(cmap,OUT+'/eboot.bin')
+    # 서포트 캐릭터 말풍선 (PackFile/data/*.pac.gz)
+    import pac; ns=0
+    for k,tr in pac.TR().items():
+        rel='PackFile/data/%s.pac.gz'%k
+        ns+=pac.patch(orig(rel),OUT+'/'+rel,tr,lambda s:b''.join(cmap[ch].to_bytes(2,'big') if ch in cmap else ch.encode('cp932') for ch in s))
+    print('support messages',ns)
     import subprocess
     for sc in ['img_boot.py','img_gface.py','img_winner.py','img_net.py','img_title.py','img_csel.py','img_scard.py','img_gallery.py','img_misc.py','img_gsup.py','img_galsel.py','img_music.py','img_novel.py']:
         subprocess.run([sys.executable,os.path.join(os.path.dirname(__file__),sc)],check=True,stdout=subprocess.DEVNULL)
